@@ -1,0 +1,56 @@
+// Number of columns
+$columns: 12;
+
+// Devices
+$md: 1023px;
+$sm: 768px;
+
+// Columns gap
+$gap: 1.5rem;
+
+.row {
+  display: flex;
+  margin-left: -$gap/2;
+  margin-right: -$gap/2;
+  box-sizing: border-box;
+  & > * {
+    box-sizing: border-box;
+  }
+  &:not(.fluid) {
+    flex-wrap: wrap;
+  }
+}
+
+.row > * {
+  margin: 0 $gap/2;
+  margin-bottom: $gap;
+}
+
+@for $i from 1 through $columns {
+  .col-#{$i} {
+    width: calc(100% / #{$columns} * #{$i} - #{$gap});
+  }
+}
+
+@media screen and (max-width: $md) {
+  @for $i from 1 through $columns {
+    .col-#{$i} {
+      width: calc(100% / #{$columns} * #{$columns} - #{$gap});
+    }
+  }
+
+  @for $i from 1 through $columns {
+    .md-col-#{$i} {
+      width: calc(100% / #{$columns} * #{$i} - #{$gap});
+    }
+  }
+
+}
+
+@media screen and (max-width: $sm) {
+  @for $i from 1 through $columns {
+    .sm-col-#{$i} {
+      width: calc(100% / #{$columns} * #{$i} - #{$gap});
+    }
+  }
+}
